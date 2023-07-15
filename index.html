@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiindYourLuckyNumber</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="LuckyNum.css">
+</head>
+<body>
+    <h1>Lucky Number</h1>
+    <h4></h4><b style="padding-left: 23%;">Is a real world application to findding the <span>mulyank </span> and  <span>bhagyank</span> with the help of date of birth</b></h4>
+    <div id="body">
+    <label>Enter Your Name: </label><input id="name" type="text" placeholder="Enter your name"><br><br>
+    <label>Enter Your Date Of Birth: </label><input id="date" type="text" placeholder="Enter date DD here"><br><br>
+    <label>Enter Your Month Of Birth: </label><input id="month" type="text" placeholder="Enter month MM here"><br><br>
+    <label>Enter Your Year Of Birth: </label><input id="year" type="text" placeholder="Enter date year here"><br><br>
+    <button onclick="luckynumber001()">GetYourLuckyNumber</button>    <input id="answer" placeholder="Here your Lucky Num"><br><br>
+    <div id="op2">Mulyank</div><br><br>
+    <div id="op3">Bhagyank</div>
+    
+
+
+    <script>
+        function luckynumber001(){
+            let d,m,y;
+            let total=0;
+            n=document.getElementById("name").value;
+            d=parseInt(document.getElementById("date").value)
+            m=parseInt(document.getElementById("month").value)
+            y=parseInt(document.getElementById("year").value)
+            sum=d+m+y;
+            
+                datesum = d%9 || 9;
+                const findsum = (sum)=>{
+                    if (sum<10){
+                        return sum;
+                    }
+                    const lastDigit = sum%10;
+                    const remaiiningnum = Math.floor(sum/10);
+                    return findsum(lastDigit+ findsum(remaiiningnum));
+                    datesum = d%9 || 9;
+                }
+                console.log(findsum(sum));
+                document.getElementById("answer").value=findsum(sum)
+                document.getElementById("op2").innerHTML = name+" Your Mulyank number is, "+findsum(datesum);
+                document.getElementById("op3").innerHTML = name+" Your Bhagyank number is, "+findsum(sum);
+    
+            
+            
+        }
+
+    </script>
+    
+</body>
+</html>
